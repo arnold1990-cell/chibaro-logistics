@@ -41,6 +41,7 @@ management:
   endpoint:
     health:
       show-details: never
+      show-components: never
 app:
   bootstrap-email: ${ADMIN_BOOTSTRAP_EMAIL:}
   bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD:}
