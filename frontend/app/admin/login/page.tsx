@@ -1,8 +1,9 @@
 "use client";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { Truck } from "lucide-react";
+
 export default function Login() {
   const [error, setError] = useState("");
   const [busy, setBusy] = useState(false);
@@ -11,10 +12,7 @@ export default function Login() {
     <main className="admin" style={{ padding: "1px" }}>
       <div className="admin-login">
         <Link className="brand" href="/">
-          <Truck />
-          <span>
-            TRANSCHIBARO<small>LOGISTICS</small>
-          </span>
+          <BrandLogo />
         </Link>
         <h1>Welcome back.</h1>
         <p>Sign in to your business workspace.</p>

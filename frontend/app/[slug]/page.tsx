@@ -76,7 +76,7 @@ export default async function Page({
       <section className="page-hero">
         <div className="container">
           <span className="eyebrow">
-            TRANSCHIBARO LOGISTICS / {slug.replaceAll("-", " ").toUpperCase()}
+            TransChibaro LOGISTICS / {slug.replaceAll("-", " ").toUpperCase()}
           </span>
           <h1>{page.title}</h1>
           <p>{page.intro}</p>

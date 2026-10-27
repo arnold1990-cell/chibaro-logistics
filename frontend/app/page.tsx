@@ -25,7 +25,7 @@ export default function Home() {
         <div className="hero-wash" />
         <div className="container photo-hero-content">
           <div className="photo-hero-copy">
-            <span className="eyebrow">TRANSCHIBARO LOGISTICS / BEITBRIDGE</span>
+            <span className="eyebrow">TransChibaro LOGISTICS / BEITBRIDGE</span>
             <h1 id="hero-title">Your next move.<br /><em>Made personal.</em></h1>
             <p>Local cargo, home moves and business deliveries. Tell us what you need to move. We will help you plan the next step.</p>
             <div className="actions">

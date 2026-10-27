@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import {
@@ -8,7 +9,7 @@ import {
   useQuery,
   useQueryClient,
 } from "@tanstack/react-query";
-import { Truck, ArrowUpRight, RefreshCw } from "lucide-react";
+import { ArrowUpRight, RefreshCw } from "lucide-react";
 import { api } from "@/lib/api";
 import { Marketing } from "@/components/marketing";
 export type Row = Record<string, string>;
@@ -55,10 +56,7 @@ function Workspace({ section, email }: { section: string; email: string }) {
     <div className="admin">
       <aside className="admin-sidebar">
         <Link href="/" className="brand">
-          <Truck color="#f27730" />
-          <span>
-            TRANSCHIBARO<small>BUSINESS WORKSPACE</small>
-          </span>
+          <BrandLogo />
         </Link>
         <nav>
           {navigation.map(([slug, label]) => (

@@ -1410,6 +1410,28 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .photo-hero .button.secondary:hover { background: #ffffff14; }
 
 /* Shared navy surfaces across public pages, forms, and administration. */
+.brand-logo {
+  display: block;
+  width: 126px;
+  height: 76px;
+  flex-shrink: 0;
+  overflow: hidden;
+  background: white;
+  border-radius: 8px;
+}
+.brand-logo img {
+  display: block;
+  width: 106px;
+  height: 106px;
+  margin: 0 auto;
+  max-width: none;
+  transform: translateY(-13px);
+}
+.nav .brand { flex-shrink: 0; }
+@media (max-width: 800px) {
+  .nav .brand-logo { width: 92px; height: 56px; }
+  .nav .brand-logo img { width: 78px; height: 78px; transform: translateY(-9px); }
+}
 .header,
 .navlinks,
 .process,

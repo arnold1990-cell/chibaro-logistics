@@ -1,9 +1,9 @@
 "use client";
 import Link from "next/link";
+import { BrandLogo } from "@/components/brand-logo";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import {
-  Truck,
   Menu,
   X,
   ArrowUpRight,
@@ -46,12 +46,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
       <header className="header">
         <div className="container nav">
           <Link className="brand" href="/" aria-label="TransChibaro Logistics home">
-            <span className="brand-icon">
-              <Truck />
-            </span>
-            <span>
-              TRANSCHIBARO<small>LOGISTICS</small>
-            </span>
+            <BrandLogo />
           </Link>
           <button
             className="menu-toggle"
@@ -96,10 +91,7 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="container footer-grid">
           <div>
             <Link href="/" className="brand">
-              <Truck />
-              <span>
-                TRANSCHIBARO<small>LOGISTICS</small>
-              </span>
+              <BrandLogo />
             </Link>
             <p>
               Local roots. Forward thinking.
