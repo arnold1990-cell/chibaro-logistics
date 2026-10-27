@@ -47,6 +47,10 @@ export function Shell({ children }: { children: React.ReactNode }) {
         <div className="container nav">
           <Link className="brand" href="/" aria-label="TransChibaro Logistics home">
             <BrandLogo />
+            <span className="company-name" aria-hidden="true">
+              <span className="company-wordmark"><span>Trans</span>Chibaro</span>{" "}
+              <span className="company-descriptor">Logistics</span>
+            </span>
           </Link>
           <button
             className="menu-toggle"
