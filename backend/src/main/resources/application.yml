@@ -1,0 +1,50 @@
+spring:
+  application:
+    name: chibaro-api
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:55433/chibaro}
+    username: ${POSTGRES_USER:chibaro}
+    password: ${POSTGRES_PASSWORD}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  data:
+    redis:
+      url: ${REDIS_URL:redis://localhost:56380}
+  session:
+    redis:
+      namespace: chibaro:sessions
+  servlet:
+    multipart:
+      max-file-size: 5MB
+      max-request-size: 6MB
+server:
+  port: 8080
+  error:
+    include-message: never
+    include-stacktrace: never
+  servlet:
+    session:
+      timeout: 30m
+      cookie:
+        http-only: true
+        secure: ${COOKIE_SECURE:false}
+        same-site: lax
+  tomcat:
+    max-http-form-post-size: 1MB
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+  endpoint:
+    health:
+      show-details: never
+app:
+  bootstrap-email: ${ADMIN_BOOTSTRAP_EMAIL:}
+  bootstrap-password: ${ADMIN_BOOTSTRAP_PASSWORD:}
+  ai-provider: ${AI_PROVIDER:disabled}
+  openai-key: ${OPENAI_API_KEY:}
+  openai-model: ${OPENAI_MODEL:gpt-4.1-mini}
+  ai-monthly-limit: ${AI_MONTHLY_GENERATION_LIMIT:100}

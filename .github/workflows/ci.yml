@@ -1,0 +1,67 @@
+name: CI
+on:
+  push:
+    branches: [main]
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: chibaro_test
+          POSTGRES_USER: chibaro
+          POSTGRES_PASSWORD: ci-only-ephemeral-password
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U chibaro -d chibaro_test"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+      redis:
+        image: redis:7-alpine
+        ports: ["6379:6379"]
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s --health-timeout 3s --health-retries 20
+    env:
+      POSTGRES_PASSWORD: ci-only-ephemeral-password
+      TEST_DATABASE_URL: jdbc:postgresql://localhost:5432/chibaro_test
+      DATABASE_URL: jdbc:postgresql://localhost:5432/chibaro_test
+      REDIS_URL: redis://localhost:6379
+      AI_PROVIDER: disabled
+      PUBLISHING_ENABLED: 'false'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+          cache: maven
+          cache-dependency-path: backend/pom.xml
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+      - run: mvn -B verify
+        working-directory: backend
+      - run: npm ci
+        working-directory: frontend
+      - run: npm run lint && npm run typecheck && npm run build
+        working-directory: frontend
+      - run: npx playwright install --with-deps chromium
+        working-directory: frontend
+      - run: npm run test:e2e
+        working-directory: frontend
+      - run: docker build -t chibaro-api:ci backend
+      - run: docker build -t chibaro-web:ci frontend
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: failure-reports
+          path: |
+            frontend/playwright-report
+            frontend/test-results
+            backend/target/surefire-reports
