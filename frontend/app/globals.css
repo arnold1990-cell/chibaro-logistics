@@ -2,10 +2,11 @@
 :root {
   --navy: #101e34;
   --orange: #f47b2b;
-  --ink: #1a2b41;
-  --muted: #576781;
-  --line: #d9e1ea;
-  --paper: #f4f7fb;
+  --ink: #f5f7fb;
+  --muted: #bcc7d6;
+  --line: #35465e;
+  --paper: #101e34;
+  color-scheme: dark;
 }
 * {
   box-sizing: border-box;
@@ -16,7 +17,7 @@ body {
   font-family: Arial, Helvetica, sans-serif;
   font-size: 15px;
   line-height: 1.65;
-  background: white;
+  background: var(--navy);
 }
 a {
   color: inherit;
@@ -1407,3 +1408,85 @@ button, a, input, select, textarea { touch-action: manipulation; }
 .photo-hero .eyebrow { color: #ffab77; }
 .photo-hero .button.secondary { color: white; background: transparent; border-color: #63718a; }
 .photo-hero .button.secondary:hover { background: #ffffff14; }
+
+/* Shared navy surfaces across public pages, forms, and administration. */
+.header,
+.navlinks,
+.process,
+.page-hero,
+.admin,
+footer,
+.mobile-dock,
+.skip {
+  background: var(--navy);
+  color: var(--ink);
+}
+.service-card,
+.transport-card,
+.form-card,
+.chat-panel,
+.admin .panel,
+.kpi,
+.admin-login,
+.truck-slider {
+  background: #1b2d44;
+  color: var(--ink);
+}
+.field input,
+.field select,
+.field textarea,
+.chat input,
+.admin input,
+.admin select,
+.admin textarea {
+  background: var(--navy);
+  color: var(--ink);
+  border-color: var(--line);
+}
+input::placeholder,
+textarea::placeholder,
+.slider-heading {
+  color: var(--muted);
+}
+.eyebrow,
+.navlinks a[aria-current="page"],
+.navlinks a:hover,
+.chat-panel a,
+.text-link,
+.transport-card .text-link {
+  color: #ffab77;
+}
+.button.secondary,
+.slider-arrow {
+  color: var(--ink);
+  background: transparent;
+  border-color: #63718a;
+}
+.button.secondary:hover,
+.slider-arrow:hover {
+  background: #ffffff14;
+}
+.step > span {
+  background: #1b2d44;
+  color: #ffab77;
+  border-color: var(--line);
+}
+.chat-panel button { color: var(--ink); }
+.error { color: #ffaaa5; }
+.success svg { color: #73d5a7; }
+.calendar-cell a { background: #443125; color: #ffd2a6; }
+@media (max-width: 800px) {
+  .menu-toggle,
+  .navlinks a {
+    background: #1b2d44;
+    color: var(--ink);
+  }
+  .navlinks a[aria-current="page"],
+  .mobile-dock [aria-expanded="true"],
+  .mobile-dock a[aria-current="page"]:not(.dock-quote) {
+    background: #30435c;
+    color: #ffab77;
+  }
+  .mobile-dock a:not(.dock-quote),
+  .mobile-dock button { color: var(--ink); }
+}
