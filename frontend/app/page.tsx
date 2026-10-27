@@ -25,8 +25,12 @@ export default function Home() {
         <div className="hero-wash" />
         <div className="container photo-hero-content">
           <div className="photo-hero-copy">
-            <span className="eyebrow">TransChibaro LOGISTICS / BEITBRIDGE</span>
-            <h1 id="hero-title">Your next move.<br /><em>Made personal.</em></h1>
+            <h1 id="hero-title" className="company-name" aria-label="TransChibaro Logistics">
+              <span className="company-wordmark"><span>Trans</span>Chibaro</span>{" "}
+              <span className="company-descriptor">Logistics</span>
+            </h1>
+            <span className="eyebrow">LOCAL TRANSPORT / BEITBRIDGE</span>
+            <h2 className="hero-tagline">Your next move.<br /><em>Made personal.</em></h2>
             <p>Local cargo, home moves and business deliveries. Tell us what you need to move. We will help you plan the next step.</p>
             <div className="actions">
               <Link className="button" href="/request-quote">Request a Quote <ArrowUpRight size={18} /></Link>
